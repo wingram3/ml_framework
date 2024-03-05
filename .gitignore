@@ -1,0 +1,12 @@
+misc_test_files/
+framework/dist/
+framework/tests/
+framework/pyproject.toml
+framework/src/deepteddy.egg-info/
+.DS_Store
+demos/.DS_Store
+demos/cats/.DS_Store
+framework/.DS_Store 
+framework/src/.DS_Store 
+framework/src/deepteddy/.DS_Store 
+
