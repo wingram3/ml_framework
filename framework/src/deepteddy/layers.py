@@ -1,6 +1,5 @@
 import numpy as np
-from deepteddy import activations, regularizers
-import initializers
+from deepteddy import activations, regularizers, initializers
 
 '''
 def import_cupy():
