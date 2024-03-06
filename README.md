@@ -11,4 +11,3 @@ pip install -i https://test.pypi.org/simple/ deepteddy
 Make sure you have Python version 3.8 or newer installed on your machine.
 
 The deepteddy framework allows for easy construction of deep neural networks with many of the most widely used optimizers, initializers, regularizers, cost functions, and activation functions. To create neural networks with deepteddy, users simply have to create a Network object, add layers to the network, configure certain hyperparameters, train the network, and (optionally) save the weights and biases of the trained network to a json file for later use. You can get an idea of how the framework can be used by looking at examples in the demos folder.
-```
