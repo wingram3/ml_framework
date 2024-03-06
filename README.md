@@ -5,7 +5,7 @@ Much of the code is heavily inspired by a similar project by Kayden Kehe, materi
 To install the deepteddy framework, run the following in a command line:
 
 ``` 
-pip install -i https://test.pypi.org/simple/ deepteddy 
+pip install -i https://test.pypi.org/simple/ deepteddy==0.0.6
 ```
 
 Make sure you have Python version 3.8 or newer installed on your machine.
