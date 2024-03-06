@@ -13,7 +13,7 @@ class Dense:
     def __init__(self, 
                  num_nodes, 
                  activation=activations.Sigmoid(), 
-                 initializer=initializers.he_normal(),
+                 initializer=initializers.he_normal,
                  regularizer=regularizers.L2(lmbda=0.0)):   # a lambda value of zero effectively means there is no regularization on a layer
 
         self.num_nodes = num_nodes
