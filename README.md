@@ -12,7 +12,7 @@ Make sure you have Python version 3.8 or newer installed on your machine.
 
 The deepteddy framework allows for easy construction of deep neural networks with many of the most widely used optimizers, initializers, regularizers, cost functions, and activation functions. To create neural networks with deepteddy, users simply have to create a Network object, add layers to the network, configure certain hyperparameters, train the network, and (optionally) save the weights and biases of the trained network to a json file for later use. You can get an idea of how the framework can be used by looking at examples in the demos folder. For example, the following shows how to set up a two-layer neural network to recognize MNIST digits, which achieved an accuracy of 99.6% on the training set and 98.4% on the test set:
 
-```
+```python
 import numpy as np
 from keras.datasets import mnist
 from deepteddy import activations, costs, layers, network, optimizers, utils
