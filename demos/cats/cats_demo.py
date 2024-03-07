@@ -1,5 +1,5 @@
 import numpy as np
-from deepteddy import activations, costs, layers, network, optimizers, regularizers, utils, initializers
+from deepteddy import activations, costs, layers, network, optimizers, regularizers, utils
 from importlib import reload
 from h5py import File
 
@@ -38,7 +38,7 @@ digits.configure_network(
 digits.train(train_x, train_y, learning_rate=0.02, epochs=512, verbose=True)
 
 # save parameters to json file
-digits.write_parameters(name='cats_demo_params.json', dir='')
+# digits.write_parameters(name='cats_demo_params.json', dir='')
 
 # summary
 digits.network_summary()
