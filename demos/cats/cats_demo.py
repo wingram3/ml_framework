@@ -1,5 +1,5 @@
 import numpy as np
-from deepteddy import activations, costs, layers, network, optimizers, regularizers, utils
+from deepteddy import activations, costs, layers, network, optimizers, regularizers, utils, initializers
 from importlib import reload
 from h5py import File
 
@@ -22,31 +22,23 @@ test_y = test_y.reshape((test_y.shape[0], 1)).T
 train_x = (train_x.reshape(train_x.shape[0], -1) / 255).T
 test_x = (test_x.reshape(test_x.shape[0], -1) / 255).T
 
-# check dims
-print(train_x.shape)
-print(train_y.shape)
-print(test_x.shape)
-print(test_y.shape)
-
 # create NN
 digits = network.Network()
-digits.add_layer(layers.Dense(num_nodes=20, activation=activations.ReLU(), regularizer=regularizers.L2(lmbda=0.1)))
-digits.add_layer(layers.Dense(num_nodes=7, activation=activations.ReLU(), regularizer=regularizers.L2(lmbda=0.1)))
-digits.add_layer(layers.Dense(num_nodes=5, activation=activations.ReLU(), regularizer=regularizers.L2(lmbda=0.1)))
-digits.add_layer(layers.Dense(num_nodes=1, activation=activations.Sigmoid(), regularizer=regularizers.L2(lmbda=0.1)))
+digits.add_layer(layers.Dense(num_nodes=32, activation=activations.ReLU(), regularizer=regularizers.L2(lmbda=0.7)))
+digits.add_layer(layers.Dense(num_nodes=1, activation=activations.Sigmoid(), regularizer=regularizers.L2(lmbda=0.7)))
 
 # configure
 digits.configure_network(
     input_layer_size=train_x.shape[0],
     cost_func=costs.MSE(),
-    optimizer=optimizers.Adam(),
+    optimizer=optimizers.SGD(),
 )
 
 # train
-digits.train(train_x, train_y, learning_rate=0.001, epochs=500, minibatch_size=None, verbose=True)
+digits.train(train_x, train_y, learning_rate=0.02, epochs=512, verbose=True)
 
 # save parameters to json file
-# digits.write_parameters(name='cats_demo_params.json', dir='')
+digits.write_parameters(name='cats_demo_params.json', dir='')
 
 # summary
 digits.network_summary()
