@@ -50,10 +50,10 @@ class Network:
             for X_minibatch, Y_minibatch in minibatches:
                 AL = self.forward_propagate(X_minibatch)
                 cost = self.cost_func.forward_cost(AL, Y_minibatch) + self.layers[-1].regularizer.cost_adjustment(m, self.parameters, self.layers)
-                gradients = self.backpropagate(AL, Y_minibatch)  
+                gradients = self.backpropagate(AL, Y_minibatch) 
                 self.parameters = self.optimizer.update_step(self.parameters, self.layers, gradients, X) 
                 self.costs.append(cost)
-
+                
             # spit out costs to screen
             if verbose and (epoch % (epochs // num_prints) == 0 or epoch == epochs):
                 print(f'Cost of epoch {epoch}: {round(cost.item(), 5)}')
@@ -108,7 +108,7 @@ class Network:
             })
     
         return A
-    
+
     # backpropagation
     def backpropagate(self, AL, Y):
         gradients = [None] * len(self.layers)   # initialize an array to hold the gradients for each GD step

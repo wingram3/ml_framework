@@ -8,4 +8,5 @@ demos/.DS_Store
 demos/cats/.DS_Store
 framework/.DS_Store 
 framework/src/.DS_Store 
-framework/src/deepteddy/.DS_Store 
+framework/src/deepteddy/.DS_Store
+framework/src/deepteddy/__pycache__
