@@ -1,47 +1,40 @@
 import numpy as np
 
-'''
-def import_cupy():
-    global np
-    np = __import__('cupy')
-'''
 
-"""
-Each cost function class has two methods:
-    - forward_cost: computes the cost between the last layer acitvations and the labels (after forward propagation)
-    - cost_derivative: computes the derivative of the cost
-"""
-
-# for binary classification
 class BinaryCrossEntropy:
+    """ Binary cross entropy cost function class. For binary classification. """
 
-    def forward_cost(self, AL, Y):
+    def forward_cost(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the cost between the last layer acitvations and the labels. """
         m = Y.shape[1]
         return np.squeeze(-1/m * np.sum(np.dot(np.log(AL.T), Y) + np.dot(np.log(1 - AL.T), 1 - Y)))
 
-    def cost_derivative(self, AL, Y):
+    def cost_derivative(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the derivative of the cost. """
         return -Y / AL + (1 - Y) / (1 - AL)
 
 
-# for multiclass classifcation
 class CategoricalCrossEntropy:
+    """ Categorical cross entropy cost function class. For multi-class classification. """
 
-    # (-1 / m * sum(Yln(A)))
-    def forward_cost(self, AL, Y):
+    def forward_cost(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the cost between the last layer acitvations and the labels. """
         m = Y.shape[1]
         return np.squeeze(-1/m * np.sum(Y * np.log(AL)))
 
-    # -Y / A
-    def cost_derivative(self, AL, Y):
+    def cost_derivative(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the derivative of the cost. """
         return AL - Y
 
 
-# mean squared error - for regression
 class MSE:
+    """ Mean squared error cost function class. For regression tasks. """
 
-    def forward_cost(self, AL, Y):
+    def forward_cost(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the cost between the last layer acitvations and the labels. """
         m = Y.shape[1]
         return np.squeeze(1/m * np.sum(np.square((Y - AL))))
-        
-    def cost_derivative(self, AL, Y):
+
+    def cost_derivative(self, AL: np.ndarray, Y: np.ndarray):
+        """ Computes the derivative of the cost. """
         return -2 * (Y - AL)
