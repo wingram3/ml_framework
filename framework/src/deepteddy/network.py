@@ -53,8 +53,8 @@ class Network:
 
     def train(
         self,
-        X,
-        Y,
+        X: np.ndarray,
+        Y: np.ndarray,
         epochs: int,
         minibatch_size: None,
         learning_rate: float = 0.01,
@@ -187,7 +187,7 @@ class Network:
         return gradients
 
 
-    def predict(self, X) -> np.ndarray:
+    def predict(self, X: np.ndarray) -> np.ndarray:
         """ Predictions of the Network given inputs X """
         return self.forward_propagate(X)
 
@@ -230,7 +230,7 @@ class Network:
             json.dump(json_parameters, file)
 
 
-    def read_parameters(self, name='parameters.json', dir=''):
+    def read_parameters(self, name: str = 'parameters.json', dir: str = '') -> None:
         """
         Load parameters from a json file.
 

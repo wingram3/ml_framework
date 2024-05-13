@@ -28,7 +28,11 @@ class Dense:
         self.regularizer = regularizer
 
 
-    def layer_forward_prop(self, A_prev, W, b) -> Tuple[np.ndarray, np.ndarray]:
+    def layer_forward_prop(
+        self,
+        A_prev: np.ndarray,
+        W: np.ndarry,
+        b: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """
         Performs forward propagation through the layer.
 
@@ -46,7 +50,13 @@ class Dense:
         return A, Z
 
 
-    def layer_backward_prop(self, dA, A_prev, W, b, Z) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def layer_backward_prop(
+        self,
+        dA: np.ndarray,
+        A_prev: np.ndarray,
+        W: np.ndarray,
+        b: np.ndarray,
+        Z: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Performs backpropagation through the layer.
 

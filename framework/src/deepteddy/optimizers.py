@@ -84,22 +84,27 @@ class Adam:
         beta2: hyperparameter to give more or less weight to previous gradients squared
         epsilon: prevents division by zero errors
     """
-    def __init__(self, learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8):
+    def __init__(self, learning_rate: float = 0.001, beta1: float = 0.9, beta2: float = 0.999, epsilon: float = 1e-8):
         self.learning_rate = learning_rate
         self.beta1 = beta1
         self.beta2 = beta2
         self.epsilon = epsilon
 
-    def build(self, parameters, layers):
+    def build(self, parameters: List, layers: List):
         """ Initialize weight velocities, bias velocites, lr scalers for weights, lr scalers for biases. """
         for layer in range(len(layers)):
-            parameters[layer]['VdW'] = np.zeros(parameters[layer]['W'].shape)  # initiliaze weight velocities
-            parameters[layer]['Vdb'] = np.zeros(parameters[layer]['b'].shape)  # initialize bias velocities
-            parameters[layer]['SdW'] = np.zeros(parameters[layer]['W'].shape)  # initialize leanring scaler for weights
-            parameters[layer]['Sdb'] = np.zeros(parameters[layer]['b'].shape)  # initialize learning scaler for biases
+            parameters[layer]['VdW'] = np.zeros(parameters[layer]['W'].shape)
+            parameters[layer]['Vdb'] = np.zeros(parameters[layer]['b'].shape)
+            parameters[layer]['SdW'] = np.zeros(parameters[layer]['W'].shape)
+            parameters[layer]['Sdb'] = np.zeros(parameters[layer]['b'].shape)
         return parameters
 
-    def update_step(self, parameters, layers, gradients, X):
+    def update_step(
+        self,
+        parameters: List,
+        layers: List,
+        gradients: List,
+        X: np.ndarray):
         """ Update parameters, dividing the learning rate by the square root of the scaler, plus epsilon. """
         for layer in range(len(layers)):
             parameters[layer]['VdW'] = self.beta1*parameters[layer]['VdW'] + (1 - self.beta1)*gradients[layer]['dW']
